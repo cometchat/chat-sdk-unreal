@@ -1,0 +1,3 @@
+# Place Windows 64-bit libraries here:
+#   - chatsdk.lib (the compiled SDK)
+#   - libcurl.lib (if using libcurl)
