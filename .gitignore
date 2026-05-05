@@ -1,9 +1,9 @@
 # Unreal Engine build artifacts
-Binaries/
-Intermediate/
-Build/
-DerivedDataCache/
-Saved/
+**/Binaries/
+**/Intermediate/
+**/Build/
+**/DerivedDataCache/
+**/Saved/
 
 # IDE
 .vs/
@@ -23,3 +23,6 @@ __MACOSX/
 *.sdf
 *.cachefile
 *.ipch
+
+# Precompiled binary zips (hosted on Cloudsmith)
+*.zip
