@@ -15,8 +15,8 @@
             "Name": "CometChat",
             "Type": "Runtime",
             "LoadingPhase": "PreDefault",
-            "PlatformAllowList": ["Win64", "Mac", "Linux", "IOS", "Android"]
+            "PlatformAllowList": ["Win64", "Mac", "IOS", "Android"]
         }
     ],
-    "SupportedTargetPlatforms": ["Win64", "Mac", "Linux", "IOS", "Android"]
+    "SupportedTargetPlatforms": ["Win64", "Mac", "IOS", "Android"]
 }

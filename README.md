@@ -4,7 +4,7 @@
 
 # CometChat Chat SDK for Unreal Engine (Beta)
 
-CometChat Unreal Engine plugin for adding real-time chat to your Unreal projects. Supports Mac, Windows, Linux, iOS, and Android.
+CometChat Unreal Engine plugin for adding real-time chat to your Unreal projects. Supports Mac, Windows, iOS, and Android.
 
 ---
 
