@@ -1,0 +1,8 @@
+# Copy the contents of public/chatsdk/ here
+# Required headers:
+#   - chatsdk/cometchat.h
+#   - chatsdk/config.h
+#   - chatsdk/types.h
+#   - chatsdk/errors.h
+#   - chatsdk/delegates.h
+#   - chatsdk/event_bridge.h
