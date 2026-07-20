@@ -21,6 +21,9 @@
 				"IOS",
 				"Android"
 			]
-		},
+		}
+	],
+	"AdditionalPluginDirectories": [
+		"../../Plugins"
 	]
 }

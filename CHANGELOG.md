@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.0
+
+First stable release. The plugin is no longer marked as beta.
+
+## Enhancements
+- Precompiled binaries are now distributed exclusively via Cloudsmith and are no longer
+  duplicated in this repository. See the README for download links.
+- Both sample projects now reference the SDK at `Plugins/CometChatSdk/` directly through
+  `AdditionalPluginDirectories`, instead of vendoring their own copy of the plugin.
+
+## Fixes
+- Fixed invalid JSON (a trailing comma) in `GroupTabbedChatChannel.uproject`.
+
 ## 1.0.0-beta.2
 
 ## New
