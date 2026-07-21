@@ -2,7 +2,7 @@
   <img alt="CometChat" src="https://assets.cometchat.io/website/images/logos/banner.png">
 </p>
 
-# CometChat Chat SDK for Unreal Engine (Beta)
+# CometChat Chat SDK for Unreal Engine
 
 CometChat Unreal Engine plugin for adding real-time chat to your Unreal projects. Supports Mac, Windows, iOS, and Android.
 
@@ -20,26 +20,24 @@ To set up the CometChat Chat SDK and utilize CometChat for your chat functionali
 
 ## Supported Engine Versions
 
-| Version | Platforms Available |
+| Version | Precompiled Binaries Available |
 |---------|-------------------|
-| UE 5.5.4 | Mac, Windows |
-| UE 5.7.2 | Mac |
+| UE 5.5 | Mac, Windows |
+| UE 5.7 | Mac |
+
+Building from source additionally supports iOS and Android on both engine versions.
 
 ## Repository Structure
 
 ```
 ├── Plugins/
-│   ├── CometChatSdk/                      ← Plugin source + ThirdParty libs
-│   │   ├── CometChat.uplugin
-│   │   ├── Config/
-│   │   ├── Source/
-│   │   └── ThirdParty/chatsdk/            ← Prebuilt static libraries (all platforms)
-│   │
-│   └── precompiled-binaries/
-│       ├── 5.5/                           ← Precompiled binaries for UE 5.5.4 (Mac + Windows)
-│       └── 5.7/                           ← Precompiled binaries for UE 5.7.2 (Mac)
+│   └── CometChatSdk/                      ← Plugin source + ThirdParty libs (the SDK)
+│       ├── CometChat.uplugin
+│       ├── Config/
+│       ├── Source/
+│       └── ThirdParty/chatsdk/            ← Prebuilt static libraries (all platforms)
 │
-├── samples/
+├── samples/                               ← Both samples reference Plugins/CometChatSdk
 │   ├── GroupOnlyChat/                     ← Simple group chat sample
 │   │   ├── GroupOnlyChat.uproject
 │   │   ├── Config/
@@ -57,7 +55,7 @@ To set up the CometChat Chat SDK and utilize CometChat for your chat functionali
 
 ## Prerequisites
 
-- Unreal Engine 5.5.4 or 5.7.2
+- Unreal Engine 5.5 or 5.7
 - C++ development tools for your platform
 - CometChat account with App ID, Auth Key, and Region
 
@@ -65,21 +63,33 @@ To set up the CometChat Chat SDK and utilize CometChat for your chat functionali
 
 ### Option 1: Use Precompiled Binaries (No Build Required)
 
-1. Copy `Plugins/CometChatSdk/` into your project's `Plugins/CometChat/` directory
-2. Download the precompiled binaries for your engine version:
+Precompiled builds are published to Cloudsmith — they are not stored in this repo.
+
+1. Download the package for your engine version:
 
    **UE 5.5 (Mac + Windows):**
    ```bash
-   curl -1sLf -O 'https://dl.cloudsmith.io/public/cometchat/cometchat/raw/versions/1.0.0-beta.2/CometChat-UE5.5-precompiled.zip'
+   curl -1sLf -O 'https://dl.cloudsmith.io/public/cometchat/cometchat/raw/versions/1.0.0/CometChat-UE5.5-precompiled.zip'
    ```
 
    **UE 5.7 (Mac):**
    ```bash
-   curl -1sLf -O 'https://dl.cloudsmith.io/public/cometchat/cometchat/raw/versions/1.0.0-beta.2/CometChat-UE5.7-precompiled.zip'
+   curl -1sLf -O 'https://dl.cloudsmith.io/public/cometchat/cometchat/raw/versions/1.0.0/CometChat-UE5.7-precompiled.zip'
    ```
 
-3. Extract the zip contents into your project's `Plugins/CometChat/` directory (merging with existing)
-4. Enable the plugin in your `.uproject`:
+2. Extract and copy the folder for your platform into your project's `Plugins/CometChat/`
+   directory, so that `CometChat.uplugin` sits directly inside it:
+
+   | Package | Folder to copy |
+   |---------|----------------|
+   | `CometChat-UE5.5-precompiled.zip` | `5.5/mac/` or `5.5/windows/` |
+   | `CometChat-UE5.7-precompiled.zip` | `5.7/` |
+
+   Each folder is a complete, self-contained plugin — it already includes the source,
+   `ThirdParty/` static libraries, and the prebuilt editor binary. Do not merge it with
+   `Plugins/CometChatSdk/` from this repo.
+
+3. Enable the plugin in your `.uproject`:
 
 ```json
 {
@@ -92,12 +102,15 @@ To set up the CometChat Chat SDK and utilize CometChat for your chat functionali
 }
 ```
 
-5. Open your project — no compilation needed
+4. Open your project — no compilation needed
 
 ### Option 2: Build from Source
 
 1. Copy `Plugins/CometChatSdk/` into your project's `Plugins/CometChat/` directory
 2. Regenerate project files and build
+
+This is the path to use for iOS and Android, which compile from source and link the
+bundled static libraries automatically.
 
 ### Run the Sample Projects
 
@@ -109,10 +122,16 @@ This repo includes two sample projects:
 To run a sample:
 
 1. Clone this repo
-2. Copy the plugin (with precompiled binaries for your version) into `samples/<SampleName>/Plugins/CometChat/`
-3. Open `samples/<SampleName>/<SampleName>.uproject` in Unreal Editor
-4. Configure your App ID, Auth Key, and Region
-5. Play in editor to test
+2. Open `samples/<SampleName>/<SampleName>.uproject` in Unreal Editor
+3. Configure your App ID, Auth Key, and Region
+4. Play in editor to test
+
+Both samples reference `Plugins/CometChatSdk/` at the repo root via
+`AdditionalPluginDirectories` in their `.uproject`, so there is nothing to copy —
+they build the SDK from source alongside the sample.
+
+To run a sample against the precompiled binaries instead, replace the contents of
+`Plugins/CometChatSdk/` with the platform folder from the Cloudsmith package.
 
 ## Plugin Architecture
 

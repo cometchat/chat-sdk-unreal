@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 2,
-	"VersionName": "1.0.0-beta.2",
+	"Version": 3,
+	"VersionName": "1.0.0",
 	"Icon": "Resources/logo.png",
 	"FriendlyName": "CometChat",
 	"Description": "CometChat integration for Unreal Engine",
@@ -9,7 +9,7 @@
 	"CreatedBy": "CometChat",
 	"EnabledByDefault": true,
 	"CanContainContent": false,
-	"IsBetaVersion": true,
+	"IsBetaVersion": false,
 	"Installed": true,
 	"Modules": [
 		{
